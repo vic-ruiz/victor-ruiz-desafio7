@@ -12,12 +12,10 @@ app.use(express.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 8080;
 
-//const routesProducts = require("./routes/routesProducts");
-//const routesCart = require("./routes/routesCart");
+//import {routesProducts} from './routes/routesProducts.js';
 //app.use("/api/productos", routesProducts);
-//app.use("/api/carrito", routesCart);
 
-knex(options).schema.createTable('products', (table) => {
+knex(options).schema.createTableIfNotExists('products', (table) => {
   table.increments('id').primary();
   table.string('nombre');
   table.string('descripcion');
