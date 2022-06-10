@@ -26,11 +26,19 @@ export default class Container {
 
   async save(product) {
     try {
-      const element = await this.knex.(this.table).insert(product);
+      const element = await this.knex.from(this.table).insert(product);
       return element;
     } catch (error) {
       console.log(`Error Code: ${error.code})`);
     }
+  }
+
+  async deleteAll(){
+    try{
+       return await this.knex.from(this.table).del()
+    }catch (error) {
+      throw new Error(`Error: ${error}`)
+  }
   }
 
   async deleteById(id){
@@ -40,6 +48,7 @@ export default class Container {
     } catch (error) {
         throw new Error(`Error: ${error}`)
     }
-    
 }
+
+
 }

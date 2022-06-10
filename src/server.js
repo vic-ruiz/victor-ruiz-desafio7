@@ -12,8 +12,16 @@ app.use(express.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 8080;
 
-//import {routesProducts} from './routes/routesProducts.js';
-//app.use("/api/productos", routesProducts);
+/*
+
+No logro importar correctamnete routesProducts 
+
+const routesProducts = require("./routes/routesProducts");
+app.use("/api/productos", routesProducts);
+
+import {router} from './routes/routesProducts.js'
+
+*/
 
 knex(options).schema.createTableIfNotExists('products', (table) => {
   table.increments('id').primary();
