@@ -1,4 +1,4 @@
-import knex from "knex"
+import knex from "knex";
 
 export default class Container {
   constructor(options, table) {
@@ -17,7 +17,7 @@ export default class Container {
 
   async getById(id) {
     try {
-      const data = await this.knex.from(this.table).select("*").where('id',id);
+      const data = await this.knex.from(this.table).select("*").where("id", id);
       return data;
     } catch (error) {
       console.log(`Error Code: ${error.code})`);
@@ -33,22 +33,23 @@ export default class Container {
     }
   }
 
-  async deleteAll(){
-    try{
-       return await this.knex.from(this.table).del()
-    }catch (error) {
-      throw new Error(`Error: ${error}`)
-  }
+  async deleteAll() {
+    try {
+      return await this.knex.from(this.table).del();
+    } catch (error) {
+      throw new Error(`Error: ${error}`);
+    }
   }
 
-  async deleteById(id){
+  async deleteById(id) {
     try {
-      const deletedElement = await this.knex.from(this.table).where('id', id).del()
+      const deletedElement = await this.knex
+        .from(this.table)
+        .where("id", id)
+        .del();
       return deletedElement;
     } catch (error) {
-        throw new Error(`Error: ${error}`)
+      throw new Error(`Error: ${error}`);
     }
-}
-
-
+  }
 }
